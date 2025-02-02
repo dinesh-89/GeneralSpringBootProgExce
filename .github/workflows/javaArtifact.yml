@@ -1,0 +1,26 @@
+name: Java Workflow
+run-name: Java Workflow
+
+on: workflow_dispatch
+
+jobs: 
+ java-workflow-run:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v4.2.2
+
+   - name: Setup Java JDK
+     uses: actions/setup-java@v4.7.0
+     with:
+      version: '17'
+      distribution: 'oracle'
+
+   - run: mvn --batch-mode --update-snapshots verify
+
+   - name: Upload a Build Artifact
+     uses: actions/upload-artifact@v4.6.0
+     with:
+      name: Java_Package
+      path: target/*.jar
+   
