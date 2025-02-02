@@ -13,7 +13,7 @@ jobs:
    - name: Setup Java JDK
      uses: actions/setup-java@v4.7.0
      with:
-      version: '17'
+      java-version: '17'
       distribution: 'oracle'
 
    - run: mvn --batch-mode --update-snapshots verify
